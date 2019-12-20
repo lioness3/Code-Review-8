@@ -1,6 +1,6 @@
 class Word
   attr_accessor :word1, :word2, :word3, :word4, :word5
-  @@words = {}
+  @@words = []
 
 
   def initialize(word1, word2, word3, word4, word5)
@@ -12,5 +12,6 @@ class Word
   end
 
   def new_word
-    @@words = @words.push(@word1)
+    @@words.push(@word1)
   end
+end
