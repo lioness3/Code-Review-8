@@ -1,6 +1,6 @@
 require('pry')
 class Word
-  attr_accessor :new_word
+  attr_accessor :new_word, :words, :study_terms
   @@words = []
   @study_terms = {}
 
@@ -10,7 +10,7 @@ class Word
   end
 
   def add_word
-    @@words.push(@new_word)
+  @@words =  @@words.push(@new_word)
   end
 
   def define
