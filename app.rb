@@ -1,6 +1,6 @@
 require('sinatra')
 require('sinatra/reloader')
-require('./lib/album')
+require('./lib/word')
 require 'pry'
 also_reload('lib/**/*.rb')
 
@@ -8,8 +8,8 @@ get('/') do
   erb(:home_page)
 end
 get('/home') do
-  if params["word1"]
-    word1 = params[:word1]
+  if params["new_word"]
+    new_word = params[:new_word]
   end
-
+  erg(:display)
 end

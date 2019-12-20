@@ -1,17 +1,21 @@
+require('pry')
 class Word
-  attr_accessor :word1, :word2, :word3, :word4, :word5
+  attr_accessor :new_word
   @@words = []
+  @study_terms = {}
 
 
-  def initialize(word1, word2, word3, word4, word5)
-    @word1 = word1
-    @word2 = word2
-    @word3 = word3
-    @word4 = word4
-    @word5 = word5
+  def initialize(new_word)
+    @new_word = new_word
   end
 
-  def new_word
-    @@words.push(@word1)
+  def add_word
+    @@words.push(@new_word)
   end
+
+  def define(word)
+    word.each do |word, definition|
+      @study_terms[word] = definition
+  end
+ end
 end

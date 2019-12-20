@@ -1,0 +1,10 @@
+<h1>Here is a List of Your New Words to Learn</h1>
+<% if @@words.any? %>
+  <ul>
+    <% @@words.each do |word| %>
+      <li><a href="/home/edit"> <%= word %></a></li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are no new words yet.</p>
+<% end %>
