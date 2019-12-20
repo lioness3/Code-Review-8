@@ -13,8 +13,8 @@ class Word
     @@words.push(@new_word)
   end
 
-  def define(word)
-    word.each do |word, definition|
+  def define
+    @words.each do |word, definition|
       @study_terms[word] = definition
   end
  end

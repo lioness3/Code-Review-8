@@ -2,7 +2,7 @@
 <% if @@words.any? %>
   <ul>
     <% @@words.each do |word| %>
-      <li><a href="/home/edit"> <%= word %></a></li>
+      <li><a href="/home/edit"> <%= @words.new_word %></a></li>
     <% end %>
   </ul>
 <% else %>

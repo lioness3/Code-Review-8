@@ -8,8 +8,9 @@ describe('word path', {:type => :feature}) do
     visit('/home')
     if has_field?('new_word')
     fill_in('new_word', :with => 'Compliment')
-  end
+  save_and_open_page
     click_on('ADD')
     expect(page).to have_content('Compliment')
+  end
   end
 end

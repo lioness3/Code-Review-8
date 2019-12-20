@@ -5,11 +5,9 @@ require 'pry'
 also_reload('lib/**/*.rb')
 
 get('/') do
-  erb(:home_page)
+  erb(:home)
 end
-get('/home') do
-  if params["new_word"]
-    new_word = params[:new_word]
-  end
-  erg(:display)
+post('/home') do
+  @new_word = params[:new_word]
+  erb(:display)
 end
