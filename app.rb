@@ -13,6 +13,6 @@ post('/home') do
   erb(:display)
 end
 post('/home/define') do
-  
-
+  @defintion = params[:defintion]
+  erb(:define)
 end
