@@ -9,7 +9,10 @@ get('/') do
 end
 post('/home') do
   @new_word = params[:new_word]
-  vocab = Word.new(@new_word)
-  @@words = vocab.add_word
+  @words = Word.add_word
   erb(:display)
+end
+post('/home/define') do
+  
+
 end
