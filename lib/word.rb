@@ -12,5 +12,7 @@ class Word
   def save
     @@study_terms[@new_word] = Word.new(@new_word, @new_defintion)
  end
-
+ def ==(word_to_compare)
+   self.new_word == word_to_compare.new_word()
+ end
 end
