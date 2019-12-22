@@ -8,20 +8,11 @@ describe('word path', {:type => :feature}) do
     visit('/home')
     if has_field?('new_word')
     fill_in('new_word', :with => 'Compliment')
+    if has_field?('new_definition')
+    fill_in('new_defintion', :with => 'a polite expression of praise or admiration')
     click_on('ADD')
-    expect(page).to have_content('Compliment')
+    expect(page).to have_content('Compliment','a polite expression of praise or admiration')
   end
-  end
-  it('goes from word link to an input for defining the word') do
-    visit('/home/define')
-    if has_field?('definition')
-    fill_in('definition', :with => 'A nice gesture')
-    click_on('DEFINE')
-    expect(page).to have_content('A nice gesture')
-  end
-  end
-  it('shows the word and definiton together') do
-    visit('/home/define/show')
-    expect(page).to have_content('A nice gesture')
-  end
+end
+end
 end

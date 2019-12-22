@@ -1,21 +1,16 @@
 require('pry')
 class Word
-  attr_accessor :new_word, :words, :study_terms, :definition
-  @@words = []
+  attr_accessor :new_word, :new_definition, :study_terms
   @@study_terms = {}
 
 
-  def initialize(new_word)
+  def initialize(new_word, new_defintion)
     @new_word = new_word
-
+    @new_defintion = new_defintion
   end
 
-  def add_word
-  @@words = @words.push(@new_word)
-  end
-
-  def define(definiton)
-    @@study_terms[@new_word] = defintion
-return @@study_terms[@new_word]
+  def save
+    @@study_terms[@new_word] = Word.new(@new_word, @new_defintion)
  end
+
 end

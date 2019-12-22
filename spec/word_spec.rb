@@ -2,15 +2,8 @@ require 'rspec'
 require 'word'
 
 describe('#Word') do
-  it ('takes in a user input') do
-    test = Word.new("Compliment")
-    expect(test.add_word).to(eq(["Compliment"]))
+  it ('saves a word and definiton') do
+    test = Word.new("Compliment", "a polite expression of praise or admiration")
+    expect(test.save()).to(eq("Compliment", "a polite expression of praise or admiration"))
  end
-end
- describe('.define') do
- it ('lets user define word') do
-   test = Word.new("Compliment")
-   test.add_word
-   expect(test.define("Nice gesture")).to(eq("Nice gesture"))
-end
 end

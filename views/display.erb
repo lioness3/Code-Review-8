@@ -1,10 +1,10 @@
 <h1>Here are a list of your study words</h1>
 <% if @vocab.any? %>
   <ul>
-    <% @vocab.each do |word| %>
+    <% @vocab.each do |word, defintion| %>
       <li><%= vocab.new_word %>,<%= vocab.new_defintion %></li>
     <% end %>
   </ul>
 <% else %>
-  <p>There are currently no records to display.</p>
+  <p>There are currently no words to display.</p>
 <% end %>
