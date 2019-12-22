@@ -11,10 +11,8 @@ This is an application that will demonstrate routing with ruby. This app is desi
 #  _Specification Chart_
 | Behavior  | Input  | Output  |
 |--------------|-----------|-----------|
-|take in 5 words|input on form|"Create", "Attend","Require", "Announce", "Describe"|
-|create definitions for each word| "Define: Attend" | "be present at (an event, meeting, or function)." |
-|Add a word
-|add new word|"Objective"|
+|take in a word and a defintion |input on form|"Create" => "bring (something) into existence."|
+|Add a word | add new word |"Objective"|
 |update definition|update Objective definition| "a thing aimed at or sought; a goal"|
 ******************
 #### _Instructions_

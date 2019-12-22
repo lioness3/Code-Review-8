@@ -20,4 +20,8 @@ describe('word path', {:type => :feature}) do
     expect(page).to have_content('A nice gesture')
   end
   end
+  it('shows the word and definiton together') do
+    visit('/home/define/show')
+    expect(page).to have_content('A nice gesture')
+  end
 end

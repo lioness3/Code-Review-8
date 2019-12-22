@@ -8,11 +8,14 @@ get('/') do
   erb(:home)
 end
 post('/home') do
-  @new_word = params[:new_word]
-  @words = Word.add_word
+  @vocab = Word.new(params[:new_word],params[:new_defintion])
   erb(:display)
 end
 post('/home/define') do
-  @defintion = params[:defintion]
+  @defintion = params[:new_defintion]
   erb(:define)
+end
+get('/home/define/show') do
+
+  erb(:flashcards)
 end
