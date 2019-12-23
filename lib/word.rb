@@ -4,15 +4,21 @@ class Word
   @@study_terms = {}
 
 
+
   def initialize(new_word, new_defintion)
     @new_word = new_word
     @new_defintion = new_defintion
   end
-
   def save
     @@study_terms[@new_word] = Word.new(@new_word, @new_defintion)
- end
+  end
+
+  def self.all
+    @@study_terms.values()
+  end
+
  def ==(word_to_compare)
    self.new_word == word_to_compare.new_word()
  end
+
 end
