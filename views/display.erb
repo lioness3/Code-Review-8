@@ -1,8 +1,8 @@
 <h1>Here are a list of your study words</h1>
 <% if @study_terms.any? %>
   <ul>
-    <% @study_terms.each do |word, defintion| %>
-      <li><%= @study_terms.new_word %> %></li>
+    <% @study_terms.each do |w, d| %>
+      <li><%= w.new_word %> :<%= d.new_definition %> </li>
     <% end %>
   </ul>
 <% else %>
