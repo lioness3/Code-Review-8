@@ -5,10 +5,10 @@ class Word
 
   def initialize(new_word, new_definition)
     @new_word = new_word
-    @new_defintion = new_definition
+    @new_definition = new_definition
   end
   def save
-    @@study_terms[@new_word] = Word.new(@new_word, @new_definition)
+    @@study_terms[self.new_word] = Word.new(self.new_word, self.new_definition)
   end
 
   def self.all

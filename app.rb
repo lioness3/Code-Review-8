@@ -9,11 +9,10 @@ get('/') do
 end
 post('/home') do
   new_word = params[:new_word]
-  new_defintion = params[:new_definition]
+  new_definition = params[:new_definition]
+  word = Word.new(new_word, new_definition)
   @study_terms = Word.all
+  @vocab_list = word.save
 
   erb(:display)
-end
-get('/home/display') do
-  redirect to('/home')
 end
