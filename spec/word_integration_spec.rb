@@ -5,7 +5,7 @@ set(:show_exceptions, false)
 
 describe('word path', {:type => :feature}) do
   it('creates a new word and goes to display page') do
-    visit('/')
+    visit('/home')
     if has_field?('new_word')
     fill_in('new_word', :with => 'Compliment')
     if has_field?('new_definition')
