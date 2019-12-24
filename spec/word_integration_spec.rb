@@ -10,6 +10,7 @@ describe('word path', {:type => :feature}) do
     fill_in('new_word', :with => 'Compliment')
     if has_field?('new_definition')
     fill_in('new_defintion', :with => 'a polite expression of praise or admiration')
+  
     expect(page).to have_content('Compliment','a polite expression of praise or admiration')
   end
 end
