@@ -4,7 +4,7 @@
 <h1>Here is a list of your study words</h1>
   <ul>
     <% @study_terms.each do |x| %>
-      <li><%= x.new_word %> : <%= x.new_definition %> <a href="/home/display"> EDIT </a> </li>
+      <li><%= x.new_word %> : <%= x.new_definition %> <a href="/home/edit"> EDIT </a> </li>
     <% end %>
   </ul>
 <% else %>

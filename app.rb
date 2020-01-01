@@ -19,12 +19,17 @@ end
 post('/home') do
   redirect to('/home')
 end
-# patch('/home/:word') do
-#   @study_terms = Word.all
-#   @new_definition = @word.edit(params[:new_definition])
-#   @new_word = self.new_word
-#   redirect to('/home')
-# end
+get('/home/edit')do
+  erb(:edit)
+end
+
+patch('/home') do
+  @study_terms = Word.all
+  @new_word = self.new_word
+  word.edit(@new_word, params[:new_definition])
+  redirect to('/home')
+  word.save()
+end
 # delete('/home/:word') do
 #   redirect to('/home')
 # end
