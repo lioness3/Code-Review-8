@@ -1,11 +1,20 @@
 <h1>Learn your Vocabulary</h1>
-<form action="/home" method="post">
-  
+
+<% if @study_terms.any? %>
+<h1>Here is a list of your study words</h1>
+  <ul>
+    <% @study_terms.each do |x| %>
+      <li><%= x.new_word %> : <%= x.new_definition %> <a href="/home/display"> EDIT </a> </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>There are currently no words to display.</p>
+<% end %>
+<form action="/home" method="get">
+
   <label for="new_word">Fill in the blank with a word you want to learn</label>
   <input type="text" id="new_word" name="new_word">
   <label for="new_definition">Fill in the blank with a definition that matches the word you want to learn</label>
   <input type="text" id="new_definition" name="new_definition">
   <button type="submit" name="button">ADD</button>
 </form>
-<!-- <p><a href="/albums//edit">Edit album</a></p>
-<a href="/albums">Return to album list</a> -->
