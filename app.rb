@@ -23,5 +23,5 @@ patch('/home/display') do
   @study_terms = Word.all
   @new_definition = @word.edit(params[:new_definition])
   @new_word = self.new_word
-  erb(:display)
+  redirect to('/home')
 end

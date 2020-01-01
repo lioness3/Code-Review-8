@@ -11,9 +11,13 @@ This is an application that will demonstrate routing with ruby. This app is desi
 #  _Specification Chart_
 | Behavior  | Input  | Output  |
 |--------------|-----------|-----------|
-|take in a word and a defintion |input on form|"Create" => "bring (something) into existence."|
+|list words on homepage|homepage|"word1" "word2"|
+|take in a word and a definition |input on form|"Create" => "bring (something) into existence."|
 |Add a word | add new word |"Objective"|
 |update definition|update Objective definition| "a thing aimed at or sought; a goal"|
+|edit a definition|click edit|"updated definition"|
+|delete a word |delete button |" "|
+|delete a definition |delete button |" "|
 ******************
 #### _Instructions_
 * open project
