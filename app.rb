@@ -24,9 +24,9 @@ get('/home/edit')do
 end
 
 patch('/home') do
-  word.edit(self.new_word,params[:new_definition])
-  @study_terms = Word.all
+  word.edit(params[:new_definition])
   word.save()
+  @study_terms = Word.all
   redirect to('/home')
 end
 # delete('/home/:word') do

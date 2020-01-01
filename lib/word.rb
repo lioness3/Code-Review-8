@@ -31,4 +31,7 @@ class Word
   def self.clear
     @@study_terms = {}
   end
+  def self.find(new_word)
+    @@study_terms[self.new_word]
+  end
 end

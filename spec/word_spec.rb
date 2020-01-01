@@ -30,4 +30,13 @@ describe('#Word') do
    test2.save()
    expect(test2.new_definition).to(eq("graham cracker, marshmellow, and chocolate desert"))
 end
+    it("deletes a definition") do
+      album = Album.new("Giant Steps", nil)
+      album.save()
+      album2 = Album.new("Blue", nil)
+      album2.save()
+      album.delete()
+      expect(Album.all).to(eq([album2]))
+    end
+  end
 end
