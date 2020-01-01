@@ -12,6 +12,7 @@ class Word
     @new_word = new_word
     @new_definition = new_definition
   end
+
   def save
     @@study_terms[self.new_word] = Word.new(self.new_word, self.new_definition)
   end
@@ -20,12 +21,12 @@ class Word
     @@study_terms.values()
   end
 
- def ==(word_to_compare)
-   self.new_word == word_to_compare.new_word()
- end
- def edit(new_definition)
-  self.new_definition.replace @new_definition
-  @@study_terms[self.new_word] = Word.new(self.new_word, self.new_definition)
-end
+  def ==(word_to_compare)
+    self.new_word == word_to_compare.new_word()
+  end
 
+  def edit(new_definition)
+    self.new_definition.replace @new_definition
+    @@study_terms[self.new_word] = Word.new(self.new_word, self.new_definition)
+  end
 end
