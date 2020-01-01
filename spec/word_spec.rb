@@ -26,6 +26,8 @@ describe('#Word') do
    test2.save()
    test3 = Word.new("Unicorn", "mythical creature")
    test3.save()
-   expect(Word.all).to(eq([test, test2, test3]))
+   test2.edit( "graham cracker, marshmellow, and chocolate desert")
+   test2.save()
+   expect(test2.new_definition).to(eq("graham cracker, marshmellow, and chocolate desert"))
 end
 end

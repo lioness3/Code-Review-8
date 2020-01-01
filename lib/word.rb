@@ -25,8 +25,8 @@ class Word
     self.new_word == word_to_compare.new_word()
   end
 
-  def edit(new_word, new_definition)
-    @@study_terms[self.new_word] = Word.new(self.new_word, new_definition)
+  def edit(redefined)
+  @new_definition = redefined
   end
   def self.clear
     @@study_terms = {}
