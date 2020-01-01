@@ -5,7 +5,7 @@ require('pry')
 # puts "This is ARGV, the arguments array: #{ARGV}."
 # puts "Hello #{first_name} #{last_name}. You are #{age} years old!"
 class Word
-  attr_accessor :new_word, :new_definition, :study_terms
+  attr_accessor :new_word, :new_definition, :study_terms, :definition1, :definition2, :definition3
   @@study_terms = {}
 
   def initialize(new_word, new_definition)
@@ -24,6 +24,8 @@ class Word
   def ==(word_to_compare)
     self.new_word == word_to_compare.new_word()
   end
+  def add_definiton
+    @@study_terms[self.new_word]= @definition1, @definition2, @definition3
 
   def edit(redefined)
   @new_definition = redefined
