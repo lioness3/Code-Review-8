@@ -26,6 +26,7 @@ class Word
   end
   def add_definiton
     @@study_terms[self.new_word]= @definition1, @definition2, @definition3
+  end
 
   def edit(redefined)
   @new_definition = redefined
@@ -35,5 +36,8 @@ class Word
   end
   def self.find(new_word)
     @@study_terms[self.new_word]
+  end
+  def delete
+  @@study_terms.delete(self.new_word)
   end
 end

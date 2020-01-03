@@ -7,9 +7,9 @@ class Definition < Word
   def initialize(new_word, new_definition)
     @new_word = new_word
     @new_definition = new_definition
-    @definition1 = defintion1
-    @definition2 = defintion2
-    @definition3 = defintion3
+    @definition1 = definition1
+    @definition2 = definition2
+    @definition3 = definition3
   end
   def self.all
     @@definitions.values
@@ -25,5 +25,8 @@ class Definition < Word
   end
   def self.clear
     @@definitions = {}
+  end
+  def delete
+  @@definitions.delete(self.new_word)
   end
 end
