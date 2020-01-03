@@ -1,15 +1,19 @@
-<h1>Learn your Vocabulary</h1>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Vocabulary</title>
+    <link rel='stylesheet' href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css'>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Learn your Vocabulary</h1>
 
-<% if @study_terms.any? %>
 <h1>Here is a list of your study words</h1>
   <ul>
-    <% @study_terms.each do |x| %>
-      <li><%= x.new_word %> : <%= x.new_definition %> <a href="/home/edit"> EDIT </a> </li>
-    <% end %>
+    
+      <li> :  <a href="/home/edit"> EDIT </a> </li>
+    
   </ul>
-<% else %>
-  <p>There are currently no words to display.</p>
-<% end %>
 <form action="/home" method="post">
 
   <label for="new_word">Fill in the blank with a word you want to learn</label>
@@ -20,7 +24,11 @@
 </form>
 <h3>Or, add another definition</h3>
 <form action="/home/edit" method="post">
-  <label for="alternate_definition">Add a Definition to <%= @new_word %> Here: </label>
+  <label for="alternate_definition">Add a Definition to  Here: </label>
   <input  name="alternate_definition" type="text">
   <button type="submit" name="button">ADD THIS TOO</button>
 </form>
+
+    </div>
+  </body>
+</html>
