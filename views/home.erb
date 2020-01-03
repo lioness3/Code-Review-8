@@ -18,3 +18,9 @@
   <input type="text" id="new_definition" name="new_definition">
   <button type="submit" name="button">ADD</button>
 </form>
+<h3>Or, add another definition</h3>
+<form action="/home/edit" method="post">
+  <label for="alternate_definition">Add a Definition to <%= @study_terms.new_word %> Here: </label>
+  <input  name="alternate_definition" type="text">
+  <button type="submit" name="button">ADD THIS TOO</button>
+</form>
