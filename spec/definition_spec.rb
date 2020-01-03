@@ -19,13 +19,13 @@ describe('#Definition') do
    defined.delete()
    expect(Definition.all).to(eq([defined2]))
  end
- #  it ('saves all words and definitons') do
- #    test = Definition.new("Compliment", "a polite expression of praise or admiration")
- #    test.save()
- #    test2 = Definition.new("Smores", "graham cracker desert")
- #    test2.save()
- #    test3 = Definition.new("Unicorn", "mythical creature")
- #    test3.save()
- #    expect(Definition.all).to(eq([test, test2, test3]))
- # end
+  it ('saves all words and definitons') do
+    test = Definition.new("Compliment", "a polite expression of praise or admiration")
+    test.save()
+    test2 = Definition.new("Smores", "graham cracker desert")
+    test2.save()
+    test3 = Definition.new("Unicorn", "mythical creature")
+    test3.save()
+    expect(Definition.all).to(eq([test, test2, test3]))
+ end
 end

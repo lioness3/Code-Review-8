@@ -20,15 +20,15 @@ end
 post('/home') do
   redirect to('/home')
 end
-get('/home/edit')do
-  erb(:edit)
-end
 
 patch('/home') do
   word.edit(params[:new_definition])
   word.save()
   @study_terms = Word.all
   redirect to('/home')
+end
+get('/home/edit')do
+erb(:edit)
 end
 # delete('/home/:word') do
 #   redirect to('/home')
