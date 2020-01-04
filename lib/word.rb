@@ -29,15 +29,18 @@ class Word
   end
 
   def edit(redefined)
-  @new_definition = redefined
+    @new_definition = redefined
   end
+
   def self.clear
     @@study_terms = {}
   end
+
   def self.find(new_word)
     @@study_terms[self.new_word]
   end
+  
   def delete
-  @@study_terms.delete(self.new_word)
+    @@study_terms.delete(self.new_word)
   end
 end

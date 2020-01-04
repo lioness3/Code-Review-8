@@ -12,12 +12,12 @@ describe('create a word path', {:type => :feature}) do
     click_on('ADD')
     expect(page).to have_content('Salami : food product')
   end
-  it('edits a definition') do
-    word = Definition.new("Tear", "product of crying", nil)
-    word.save
-    visit("/home/edit")
-    fill_in('alternate_definition', :with => 'ripping of an object, usually paper')
-    click_on('ADD THIS TOO')
-    expect(page).to have_content("Tear product of crying: ripping of an object, usually paper" )
-  end
+  # it('edits a definition') do
+  #   word = Definition.new("Tear", "product of crying", nil)
+  #   word.save
+  #   visit("/home/edit")
+  #   fill_in('alternate_definition', :with => 'ripping of an object, usually paper')
+  #   click_on('ADD THIS TOO')
+  #   expect(page).to have_content("Tear product of crying: ripping of an object, usually paper" )
+  # end
 end

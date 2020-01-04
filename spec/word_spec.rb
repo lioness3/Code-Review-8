@@ -30,5 +30,6 @@ describe('#Word') do
    test2.edit( "graham cracker, marshmellow, and chocolate desert")
    test2.save()
    expect(test2.new_definition).to(eq("graham cracker, marshmellow, and chocolate desert"))
-end  
+end
+
 end

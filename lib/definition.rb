@@ -27,7 +27,7 @@ class Definition < Word
   def self.clear
     @@definitions = {}
   end
-  def delete
-  @@definitions.delete(self.new_word)
+  def delete_one(string)
+    @@definitions.invert.delete(string)
   end
 end
