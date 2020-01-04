@@ -45,6 +45,6 @@ describe('#Definition') do
     test2.save()
     test2.delete_one("jewlery worn on the finger")
     test2.save()
-      expect([test2]).to(eq("another word for convince" ))
+      expect(test2.new_definition).to(eq(nil))
 end
 end

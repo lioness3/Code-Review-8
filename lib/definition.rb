@@ -1,5 +1,5 @@
 require('pry')
-class Definition < Word
+class Definition
   attr_accessor :new_word, :new_definition, :alternate_definition
 
   @@definitions = {}
@@ -28,6 +28,10 @@ class Definition < Word
     @@definitions = {}
   end
   def delete_one(string)
-    @@definitions.invert.delete(string)
+    if string == self.new_definition
+      return  self.new_definition = nil
+    elsif string == self.alternate_definition
+    return self.alternate_definition = nil
   end
+end
 end
