@@ -6,7 +6,7 @@
 #### _By: Joann Carter_
 ***************
 # _Description_
-This is an application that will demonstrate routing with ruby. This app is designed with children study habits in mind.
+This is an application that will demonstrate routing with ruby. This app is designed with children's study habits in mind.
 
 #  _Specification Chart_
 | Behavior  | Input  | Output  |
@@ -22,11 +22,13 @@ This is an application that will demonstrate routing with ruby. This app is desi
 #### _Instructions_
 * open project
 * bundle Gemfile
-* run rspec
+* run 'ruby app.rb' in terminal
+* open 'localhost:4567' in your browser
 * Verify all necessary steps by cloning your application from Github and then documenting your application's setup instructions yourself.
 ***************
 #### _Known Bugs_
-
+* app will not show user input on edit page
+* app will not edit definition on localhost
 ***************
 # _Technology Used_
 * Ruby

@@ -19,7 +19,7 @@ class Definition
     @@definitions[self.new_word] = Definition.new(self.new_word, self.new_definition, self.alternate_definition)
   end
   def self.find(new_word)
-    @@definitions[self.new_word]
+    @@definitions[new_word]
   end
   def add_definition(alternate_definition)
     @alternate_definition = alternate_definition

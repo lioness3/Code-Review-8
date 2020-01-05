@@ -6,9 +6,9 @@ set(:show_exceptions, false)
 describe('create a word path', {:type => :feature}) do
   it('creates a word and then goes to the home page') do
     visit('/home')
-    fill_in("new_word", :with => 'Salami')
+    fill_in('new_word', :with => 'Salami')
     fill_in('new_definition', :with => 'food product')
-      fill_in('alternate_definition', :with => 'something else will go here')
+    fill_in('alternate_definition', :with => 'something else will go here')
     click_on('ADD')
     expect(page).to have_content('Salami : food product.something else will go here')
   end

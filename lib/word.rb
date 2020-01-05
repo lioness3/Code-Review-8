@@ -43,7 +43,7 @@ class Word
   end
 
   def self.find(new_word)
-    @@study_terms[self.new_word]
+     @@study_terms[new_word]
   end
 
   def delete

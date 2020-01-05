@@ -20,6 +20,7 @@ get('/home') do
   word.save()
   @study_terms = Word.all()
   @definitions = Definition.all()
+  binding.pry
   erb(:home)
 end
 post('/home') do
@@ -27,26 +28,27 @@ post('/home') do
   new_definition = params[:new_definition]
   alternate_definition = params[:alternate_definition]
   word = Word.new(new_word, new_definition)
-  word.save()
+  word.add_definition(params[:alternate_definition])
   define = Definition.new(new_word, new_definition, alternate_definition)
+  @chosen_word = word.new_word
+  word.save()
   define.save()
   @definitions = Definition.all()
   @study_terms = Word.all()
   erb(:home)
 end
-get('/home/edit')do
+get('/home/edit') do
+  @term = Word.find(@chosen_word)
   @study_terms = Word.all()
   @definitions = Definition.all()
 erb(:edit)
 end
 
 patch('/home/edit') do
+  @term = Word.find(@chosen_word)
+  @term.edit(params[:new_definition])
+  @term.edit(params[:alternate_definition])
   @study_terms = Word.all()
   @definitions = Definition.all()
   erb(:home)
-end
-post('/home/edit')do
-  @study_terms = Word.all()
-  @definitions = Definition.all()
-erb(:edit)
 end
