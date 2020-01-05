@@ -29,10 +29,11 @@ class Word
   end
 
   def edit(redefined)
-    if self.new_definition
-      return @new_definition.replace(redefined)
-    elsif self.alternate_definition
-      return @alternate_definition.replace(redefined)
+    if  @new_definition
+      return self.new_definition.replace(redefined)
+    elsif
+        @alternate_definition
+      return self.alternate_definition.replace(redefined)
     end
   end
 

@@ -7,6 +7,7 @@ also_reload('lib/**/*.rb')
 
 get('/') do
   @study_terms = Word.all
+  @definitons = Definition.all
   erb(:home)
 end
 get('/home') do
@@ -17,8 +18,8 @@ get('/home') do
   define = Definition.new(new_word, new_definition, alternate_definition)
   define.save()
   word.save()
-  @study_terms = Word.all
-  @definitons = Definition.all
+  @study_terms = Word.all()
+  @definitons = Definition.all()
   erb(:home)
 end
 post('/home') do
@@ -29,8 +30,8 @@ post('/home') do
   word.save()
   define = Definition.new(new_word, new_definition, alternate_definition)
   define.save()
-  @definitons = Definition.all
-  @study_terms = Word.all
+  @definitons = Definition.all()
+  @study_terms = Word.all()
   erb(:home)
 end
 

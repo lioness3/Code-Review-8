@@ -1,10 +1,10 @@
 <h1>Learn your Vocabulary</h1>
 
 <% if @study_terms.any? %>
-<h1>Here is a list of your study words</h1>
+<h5>Here is a list of your study words</h5>
   <ul>
     <% @study_terms.each do |x| %>
-      <li><%= x.new_word %> : <%= x.new_definition %> <a href="/home/edit"> EDIT </a> </li>
+      <li><%= x.new_word %> : <%= x.new_definition %> . <%= x.alternate_definition %><a href="/home/edit"> EDIT </a> </li>
     <% end %>
   </ul>
 <% else %>
