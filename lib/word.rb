@@ -29,7 +29,11 @@ class Word
   end
 
   def edit(redefined)
-    @new_definition = redefined
+    if self.new_definition
+      return @new_definition.replace(redefined)
+    elsif self.alternate_definition
+      return @alternate_definition.replace(redefined)
+    end
   end
 
   def self.clear
@@ -39,7 +43,7 @@ class Word
   def self.find(new_word)
     @@study_terms[self.new_word]
   end
-  
+
   def delete
     @@study_terms.delete(self.new_word)
   end

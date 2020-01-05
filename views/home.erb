@@ -12,15 +12,11 @@
 <% end %>
 <form action="/home" method="post">
 
-  <label for="new_word">Fill in the blank with a word you want to learn</label>
-  <input name="new_word" type="text" id="new_word" >
-  <label for="new_definition">Fill in the blank with a definition that matches the word you want to learn</label>
-  <input type="text" id="new_definition" name="new_definition">
+  <label for="new_word">Fill in the blank with a word you want to learn: </label>
+  <input name="new_word" type="text" id="new_word" ><br>
+  <label for="new_definition">Fill in the blank with a definition: </label>
+  <input type="text" id="new_definition" name="new_definition"><br>
+  <label for="alternate_definition">Add another meaning here: </label>
+  <input  name="alternate_definition" type="text"><br>
   <button type="submit" name="button">ADD</button>
-</form>
-<h3>Or, add another definition</h3>
-<form action="/home/edit" method="post">
-  <label for="alternate_definition">Add a Definition to <%= @new_word %> Here: </label>
-  <input  name="alternate_definition" type="text">
-  <button type="submit" name="button">ADD THIS TOO</button>
 </form>

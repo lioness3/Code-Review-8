@@ -6,7 +6,6 @@ set(:show_exceptions, false)
 describe('create a word path', {:type => :feature}) do
   it('creates a word and then goes to the home page') do
     visit('/home')
-    save_and_open_page
     fill_in("new_word", :with => 'Salami')
     fill_in('new_definition', :with => 'food product')
     click_on('ADD')
