@@ -1,11 +1,12 @@
 <h1>Learn your Vocabulary</h1>
 
-<% if @definitions.any? || @study_terms.any? %>
+<% if @definitions.any? %>
 <h5>Here is a list of your study words</h5>
   <ul>
     <% @definitions.each do |x| %>
-      <li><%= x.new_word %> : <%= x.new_definition %> . <%= x.alternate_definition %><a href="/home/edit"> EDIT </a> </li>
-    <% end %>
+      <li><%= x.new_word %> : <%= x.new_definition %> . <%= x.alternate_definition %>
+        <a href="/home/edit"> EDIT </a> </li>
+        <% end %>
   </ul>
 <% else %>
   <p>There are currently no words to display.</p>

@@ -30,27 +30,23 @@ post('/home') do
   word.save()
   define = Definition.new(new_word, new_definition, alternate_definition)
   define.save()
-  @definitons = Definition.all()
+  @definitions = Definition.all()
   @study_terms = Word.all()
   erb(:home)
 end
-
-patch('/home/edit') do
-  @study_terms = Word.all
-  @definitions = Definition.all
-  redirect to('/home')
-end
 get('/home/edit')do
-  define = Definition.new(new_word, new_definition, alternate_definition)
-  @study_terms = Word.all
-  @definitions = Definition.all
+  @study_terms = Word.all()
+  @definitions = Definition.all()
 erb(:edit)
 end
+
+patch('/home/edit') do
+  @study_terms = Word.all()
+  @definitions = Definition.all()
+  erb(:home)
+end
 post('/home/edit')do
-  @study_terms = Word.all
-  alternate_definition = params[:alternate_definition]
-  define = Definition.new(new_word, new_definition, alternate_definition)
-  define.save()
-  @definitions = Definition.all
+  @study_terms = Word.all()
+  @definitions = Definition.all()
 erb(:edit)
 end

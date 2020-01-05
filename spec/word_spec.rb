@@ -40,5 +40,13 @@ it ('adds a definition') do
   test.save()
   expect(test.alternate_definition).to(eq("someting else goes here"))
 end
+it ('deletes a word') do
+  test = Word.new("Compliment", "a polite expression of praise or admiration")
+  test.save()
+  test2 = Word.new("Smores", "graham cracker desert")
+  test2.save()
+  test.delete()
+  expect(Word.all).to(eq([test2]))
+end
 
 end
