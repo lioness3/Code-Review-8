@@ -24,8 +24,9 @@ class Word
   def ==(word_to_compare)
     self.new_word == word_to_compare.new_word()
   end
-  def add_definiton(alternate_definition)
-    @@study_terms[self.new_word]= @new_definition, @alternate_definition
+  def add_definition(definition_to_add)
+    @alternate_definition = definition_to_add
+    return @@study_terms[self.new_word]= @new_definition, @alternate_definition
   end
 
   def edit(redefined)

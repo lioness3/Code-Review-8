@@ -7,7 +7,7 @@ also_reload('lib/**/*.rb')
 
 get('/') do
   @study_terms = Word.all
-  @definitons = Definition.all
+  @definitions = Definition.all
   erb(:home)
 end
 get('/home') do
@@ -19,7 +19,7 @@ get('/home') do
   define.save()
   word.save()
   @study_terms = Word.all()
-  @definitons = Definition.all()
+  @definitions = Definition.all()
   erb(:home)
 end
 post('/home') do
@@ -35,27 +35,22 @@ post('/home') do
   erb(:home)
 end
 
-patch('/home') do
-  word.edit(params[:new_definition])
-  word.save()
+patch('/home/edit') do
   @study_terms = Word.all
-  @definitons = Definition.all
+  @definitions = Definition.all
   redirect to('/home')
 end
 get('/home/edit')do
-@study_terms = Word.all
-define = Definition.new(new_word, new_definition, alternate_definition)
-@definitons = Definition.all
+  define = Definition.new(new_word, new_definition, alternate_definition)
+  @study_terms = Word.all
+  @definitions = Definition.all
 erb(:edit)
 end
 post('/home/edit')do
-@study_terms = Word.all
-alternate_definition = params[:alternate_definition]
-define = Definition.new(new_word, new_definition, alternate_definition)
-define.save()
-@definitons = Definition.all
+  @study_terms = Word.all
+  alternate_definition = params[:alternate_definition]
+  define = Definition.new(new_word, new_definition, alternate_definition)
+  define.save()
+  @definitions = Definition.all
 erb(:edit)
 end
-# delete('/home/:wod') do
-#   redirect to('/home')
-# end

@@ -9,7 +9,7 @@ describe('create a word path', {:type => :feature}) do
     fill_in("new_word", :with => 'Salami')
     fill_in('new_definition', :with => 'food product')
     click_on('ADD')
-    expect(page).to have_content('Salami : food product')
+    expect(page).to have_content('Salami : food product.')
   end
   # it('edits a definition') do
   #   word = Definition.new("Tear", "product of crying", nil)

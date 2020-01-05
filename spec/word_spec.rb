@@ -31,5 +31,14 @@ describe('#Word') do
    test2.save()
    expect(test2.new_definition).to(eq("graham cracker, marshmellow, and chocolate desert"))
 end
+it ('adds a definition') do
+  test = Word.new("Compliment", "a polite expression of praise or admiration")
+  test.save()
+  test2 = Word.new("Smores", "graham cracker desert")
+  test2.save()
+  test.add_definition("someting else goes here")
+  test.save()
+  expect(test.alternate_definition).to(eq("someting else goes here"))
+end
 
 end
