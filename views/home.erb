@@ -1,10 +1,10 @@
-<h1>Learn your Vocabulary</h1>
+<h1 style = 'font-weight: bold'>Learn your Vocabulary</h1>
 
 <% if @definitions.any? %>
-<h3>Here is a list of your study words</h3>
-  <ul>
+
+  <ul style = "list-style-type: none;" >
     <% @definitions.each do |x| %>
-      <li style = "font-size: 25pt"><a href="/home/edit" style = "font-size: 15pt; color: white; text-decoration: underline;"> DELETE</a> <%= x.new_word %> : <%= x.new_definition %> . <%= x.alternate_definition %>
+      <li style = "font-size: 25pt"><a href="/home/delete" style = "font-size: 15pt; color: white; text-decoration: underline;"> DELETE</a> <span style = "color:#68D172"> <%= x.new_word %></span><span style = "color:#109C1C"> : <%= x.new_definition %> . <%= x.alternate_definition %></span>
         <a href="/home/edit" style= "font-size: 15pt; color: white; text-decoration: underline;"> EDIT </a> </li>
         <% end %>
   </ul>
@@ -13,13 +13,14 @@
 <% end %>
 <br>
 <br>
-<form action="/home" method="post" style = "font-family: Palatino Linotype; letter-spacing: 2px ">
+<form action="/home" method="post" style = "font-size: 13pt">
 
   <label for="new_word">Fill in the blank with a word you want to learn: </label>
   <input name="new_word" type="text" id="new_word" style ="background-color: #19206B; color: #8BD1F7; border:solid white" ><br>
   <label for="new_definition">Fill in the blank with a definition: </label>
   <input type="text" id="new_definition" name="new_definition" style ="background-color: #19206B; color: #8BD1F7; border:solid white"><br>
   <label for="alternate_definition">Add another meaning here: </label>
-  <input  name="alternate_definition" type="text" style ="background-color: #19206B; color: #8BD1F7; border:solid white"><br>
+  <input  name="alternate_definition" type="text" style ="background-color: #19206B; color: #8BD1F7; border:solid white">
+  <br>
   <button type="submit" class= "btn-lg" name="button">ADD</button>
 </form>

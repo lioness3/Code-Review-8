@@ -55,6 +55,20 @@ patch('/home/edit') do
   @definitions = Definition.all()
   erb(:edit)
 end
+get ('/home/delete') do
+  @study_terms = Word.all()
+  @definitions = Definition.all()
+  erb(:home)
+end
+delete('/home/delete') do
+  word = Word.find(params[:new_word])
+  word.delete
+  word.save
+  @study_terms = Word.all()
+  @definitions = Definition.all()
+  erb(:home)
+end
+
 post('/home/edit') do
   new_word = params[:new_word]
   new_definition = params[:new_definition]
