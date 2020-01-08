@@ -1,20 +1,16 @@
 require('pry')
-# first_name = ARGV[0]
-# last_name = ARGV[1]
-# age = ARGV[2]
-# puts "This is ARGV, the arguments array: #{ARGV}."
-# puts "Hello #{first_name} #{last_name}. You are #{age} years old!"
 class Word
-  attr_accessor :new_word, :new_definition, :study_terms, :alternate_definition
+  attr_accessor :new_word, :id
   @@study_terms = {}
 
-  def initialize(new_word, new_definition)
-    @new_word = new_word
-    @new_definition = new_definition
+  def initialize(attributes)
+    @new_word = attributes.fetch(:new_word)
+    @id = attributes.fetch(:id)
+
   end
 
   def save
-    @@study_terms[self.new_word] = Word.new(self.new_word, self.new_definition)
+    @@study_terms[self.id] = Word.new({ :new_word => self.new_word, :id => self.id })
   end
 
   def self.all
@@ -24,18 +20,14 @@ class Word
   def ==(word_to_compare)
     self.new_word == word_to_compare.new_word()
   end
-  def add_definition(definition_to_add)
-    @alternate_definition = definition_to_add
-    return @@study_terms[self.new_word]= @new_definition, @alternate_definition
+
+  def add_definition
+    Definition.find_by_word_id(self.id)
   end
 
-  def edit(redefined)
-    if  @new_definition
-      return self.new_definition.replace(redefined)
-    elsif
-        @alternate_definition
-      return self.alternate_definition.replace(redefined)
-    end
+  def edit(new_word)
+  self.new_word = new_word
+  @@study_terms[self.id] = Word.new({ :new_word => self.new_word, :id => self.id })
   end
 
   def self.clear

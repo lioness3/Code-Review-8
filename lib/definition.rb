@@ -1,37 +1,39 @@
 require('pry')
 class Definition
-  attr_accessor :new_word, :new_definition, :alternate_definition
+  attr_accessor :id, :word_id, :user_definitions
 
   @@definitions = {}
 
-  def initialize(new_word, new_definition, alternate_definition)
-    @new_word = new_word
-    @new_definition = new_definition
-    @alternate_definition = alternate_definition
-  end
+  def initialize(attributes)
+    @id = rand(5)
+    @user_definitions = attributes.fetch("user_definitions")
+    @word_id = attributes.fetch("word_id")
+
   def self.all
     @@definitions.values
   end
-  def ==(word_to_compare)
-    self.new_word == word_to_compare.new_word()
-  end
+
+  # def ==(word_to_compare)
+  #   self.new_word == word_to_compare.new_word()
+  # end
+
   def save
-    @@definitions[self.new_word] = Definition.new(self.new_word, self.new_definition, self.alternate_definition)
+    @@definitions[self.new_word] = Definition.new(self.word_id, self.user_definitions)
   end
-  def self.find(new_word)
-    @@definitions[new_word]
+
+  def self.find(id)
+    @@definitions[id]
   end
-  def add_definition(alternate_definition)
-    @alternate_definition = alternate_definition
+
+  def self.find_by_word_id(word_id)
+    @@definitions.select { |definition| definition.word_id == word_id }
   end
+
   def self.clear
     @@definitions = {}
   end
-  def delete_one(string)
-    if string == self.new_definition
-      return  self.new_definition = nil
-    elsif string == self.alternate_definition
-    return self.alternate_definition = nil
-  end
+
+  def delete
+  @@definitions.delete(self.word_id)
 end
 end
