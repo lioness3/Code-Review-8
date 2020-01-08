@@ -7,7 +7,7 @@
       <li><a href="/home/delete" class = "links"> DELETE</a> <span style = "color:#68D172"> <%= word.name %> </span>
         <% end %>
     <% if @definitions.any? %>
-        <% @definitions.each do |define| %><span style = "color:#109C1C"> <%= define.name %>  </span>
+        <% @definitions.each do |define| %><span class= "green"> <%= define.name %> </span>
         <% if define.name == define.name %>
         <% break %>
         <% end %>
@@ -24,9 +24,11 @@
 <form action="/home" method="post" style = "font-size: 13pt">
 
   <label for="new_word">Fill in the blank with a word you want to learn: </label>
-  <input name="name" class= "home_input" type="text"  ><br>
+  <input name="name" class= "home_input" type="text"  >
+  <br>
   <label for="new_definition">Fill in the blank with a definition: </label>
-  <input type="text" class= "home_input" name="new_definition"><br>
+  <input type="text" class= "home_input" name="new_definition">
+  <br>
   <label for="alternate_definition">Add another meaning here: </label>
   <input  name="alternate_definition" class= "home_input" type="text">
   <br>

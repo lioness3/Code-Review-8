@@ -28,25 +28,25 @@ post('/home') do
   @definitions = Definition.all()
   erb(:home)
 end
+
 get('/home/edit') do
-  @term = Word.find(@chosen_word)
+  @word = Word.find(params[:id].to_i())
+    @word.update(params[:name])
   @study_terms = Word.all()
   @definitions = Definition.all()
 erb(:edit)
 end
 
 patch('/home/edit') do
-  @term = Word.find(@chosen_word)
-  @vocab = Defintion.find(params[:new_definition])
-  @vocab.edit(params[:new_definition])
-  @vocab2 = Definition.find(params[:alternate_definition])
-    @vocab2.edit(params[:alternate_definition])
-
+  @word = Word.find(params[:id].to_i())
+  @word.update(params[:name])
   @study_terms = Word.all()
   @definitions = Definition.all()
   erb(:edit)
 end
 get ('/home/delete') do
+  @word = Word.find(params[:id].to_i())
+  @word.delete()
   @study_terms = Word.all()
   @definitions = Definition.all()
   erb(:home)
