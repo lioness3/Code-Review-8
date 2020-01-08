@@ -1,7 +1,7 @@
 
 class Definition
-  attr_reader :id
-  attr_accessor :name, :word_id
+  attr_reader
+  attr_accessor :name, :word_id, :id
 
   @@definitions = {}
   @@total_rows = 0
@@ -42,10 +42,10 @@ class Definition
     @@definitions = {}
   end
 
-  def self.find_by_word(alb_id)
+  def self.find_by_word(w_id)
     definitions = []
     @@definitions.values.each do |definition|
-      if definition.word_id == alb_id
+      if definition.word_id == w_id
         definitions.push(definition)
       end
     end

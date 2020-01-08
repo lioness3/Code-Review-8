@@ -4,7 +4,7 @@
 
   <ul>
     <% @study_terms.each do |word| %>
-      <li><a href="/home/delete" class = "links"> DELETE</a> <span style = "color:#68D172"> <%= word.name %> </span>
+      <li><a href="/home/delete" class = "links"> ❌</a> <span style = "color:#68D172"> <%= word.name %> </span>
         <% end %>
     <% if @definitions.any? %>
         <% @definitions.each do |define| %><span class= "green"> <%= define.name %> </span>
@@ -13,7 +13,7 @@
         <% end %>
         <% end %>
         <% end %>
-        <a href="/home/edit" class = "links"> EDIT </a> </li>
+        <a href="/home/edit" class = "links"> ✏️ </a> </li>
   </ul>
 <% else %>
   <p>There are currently no words to display.</p>
@@ -23,7 +23,7 @@
 <br>
 <form action="/home" method="post" style = "font-size: 13pt">
 
-  <label for="new_word">Fill in the blank with a word you want to learn: </label>
+  <label >Fill in the blank with a word you want to learn: </label>
   <input name="name" class= "home_input" type="text"  >
   <br>
   <label for="new_definition">Fill in the blank with a definition: </label>

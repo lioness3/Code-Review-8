@@ -18,7 +18,7 @@ get('/home') do
   erb(:home)
 end
 post('/home') do
-  name = params[:new_word]
+  name = params[:name]
   word = Word.new({:name => name, :id => nil})
   word.save()
   defined = params[:new_definition]
@@ -31,7 +31,6 @@ end
 
 get('/home/edit') do
   @word = Word.find(params[:id].to_i())
-    @word.update(params[:name])
   @study_terms = Word.all()
   @definitions = Definition.all()
 erb(:edit)
@@ -39,6 +38,9 @@ end
 
 patch('/home/edit') do
   @word = Word.find(params[:id].to_i())
+  define = Definition.find(params[:word_id].to_i())
+  define.update(params[:name], @word_id)
+  
   @word.update(params[:name])
   @study_terms = Word.all()
   @definitions = Definition.all()

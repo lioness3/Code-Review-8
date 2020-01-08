@@ -1,7 +1,7 @@
 
 class Word
-  attr_accessor :name
-  attr_reader :id
+  attr_accessor :name, :id
+  
 
   @@words = {}
   @@total_rows = 0
