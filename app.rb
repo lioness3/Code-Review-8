@@ -6,6 +6,8 @@ require 'pry'
 also_reload('lib/**/*.rb')
 
 get('/') do
+  # Word.clear
+  # Definition.clear
   @study_terms = Word.all
   @definitions = Definition.all
   erb(:home)
@@ -19,8 +21,8 @@ post('/home') do
   name = params[:new_word]
   word = Word.new({:name => name, :id => nil})
   word.save()
-  name = params[:new_definition]
-  define = Definition.new(({:name => name, :word_id => @word_id, :id => nil}))
+  defined = params[:new_definition]
+  define = Definition.new(({:name => defined, :word_id => @word_id, :id => nil}))
   define.save()
   @study_terms = Word.all()
   @definitions = Definition.all()

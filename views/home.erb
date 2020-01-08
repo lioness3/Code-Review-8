@@ -3,14 +3,22 @@
 <% if @study_terms.any? %>
 
   <ul>
-    <% @study_terms.each do |x| %>
-      <li><a href="/home/delete" class = "links"> DELETE</a> <span style = "color:#68D172"> <%= x.name %></span><span style = "color:#109C1C"></span>
-        <a href="/home/edit" class = "links"> EDIT </a> </li>
+    <% @study_terms.each do |word| %>
+      <li><a href="/home/delete" class = "links"> DELETE</a> <span style = "color:#68D172"> <%= word.name %> </span>
         <% end %>
+    <% if @definitions.any? %>
+        <% @definitions.each do |define| %><span style = "color:#109C1C"> <%= define.name %>  </span>
+        <% if define.name == define.name %>
+        <% break %>
+        <% end %>
+        <% end %>
+        <% end %>
+        <a href="/home/edit" class = "links"> EDIT </a> </li>
   </ul>
 <% else %>
   <p>There are currently no words to display.</p>
 <% end %>
+
 <br>
 <br>
 <form action="/home" method="post" style = "font-size: 13pt">
