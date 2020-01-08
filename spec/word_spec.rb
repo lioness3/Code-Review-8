@@ -1,52 +1,89 @@
 require 'rspec'
 require 'word'
 require 'definition'
+require 'pry'
 
-describe('#Word') do
-  before(:each)do
-  Word.clear()
+describe '#Word' do
+
+  before(:each) do
+    Word.clear
+    Definition.clear
   end
 
-  it ('saves a word and definiton') do
-    test = Word.new("Compliment", "a polite expression of praise or admiration")
-    expect(test.save()).to(eq(test))
- end
-  it ('saves all words and definitons') do
-    test = Word.new("Compliment", "a polite expression of praise or admiration")
-    test.save()
-    test2 = Word.new("Smores", "graham cracker desert")
-    test2.save()
-    test3 = Word.new("Unicorn", "mythical creature")
-    test3.save()
-    expect(Word.all).to(eq([test, test2, test3]))
- end
- it ('edits a definiton') do
-   test = Word.new("Compliment", "a polite expression of praise or admiration")
-   test.save()
-   test2 = Word.new("Smores", "graham cracker desert")
-   test2.save()
-   test3 = Word.new("Unicorn", "mythical creature")
-   test3.save()
-   test2.edit( "graham cracker, marshmellow, and chocolate desert")
-   test2.save()
-   expect(test2.new_definition).to(eq("graham cracker, marshmellow, and chocolate desert"))
-end
-it ('adds a definition') do
-  test = Word.new("Compliment", "a polite expression of praise or admiration")
-  test.save()
-  test2 = Word.new("Smores", "graham cracker desert")
-  test2.save()
-  test.add_definition("someting else goes here")
-  test.save()
-  expect(test.alternate_definition).to(eq("someting else goes here"))
-end
-it ('deletes a word') do
-  test = Word.new("Compliment", "a polite expression of praise or admiration")
-  test.save()
-  test2 = Word.new("Smores", "graham cracker desert")
-  test2.save()
-  test.delete()
-  expect(Word.all).to(eq([test2]))
-end
+  describe('.all') do
+    it("returns an empty array when there are no words") do
+      expect(Word.all).to(eq([]))
+    end
+  end
 
+  describe('#save') do
+    it("saves an word") do
+      word = Word.new({:name => "A Love Supreme", :id => nil})
+      word.save()
+      word2 = Word.new({:name => "Blue", :id => nil})
+      word2.save()
+      expect(Word.all).to(eq([word, word2]))
+    end
+  end
+
+  describe('.clear') do
+    it("clears all words") do
+      word = Word.new({:name => "A Love Supreme", :id => nil})
+      word.save()
+      word2 = Word.new({:name => "Blue", :id => nil})
+      word2.save()
+      Word.clear
+      expect(Word.all).to(eq([]))
+    end
+  end
+
+  describe('#==') do
+    it("is the same word if it has the same attributes as another word") do
+      word = Word.new({:name => "Blue", :id => nil})
+      word2 = Word.new({:name => "Blue", :id => nil})
+      expect(word).to(eq(word2))
+    end
+  end
+
+  describe('.find') do
+    it("finds an word by id") do
+      word = Word.new({:name => "A Love Supreme", :id => nil})
+      word.save()
+      word2 = Word.new({:name => "Blue", :id => nil})
+      word2.save()
+      expect(Word.find(word.id)).to(eq(word))
+    end
+  end
+
+  describe('#update') do
+    it("updates an word by id") do
+      word = Word.new({:name => "A Love Supreme", :id => nil})
+      word.save()
+      word.update("A Love Supreme")
+      expect(word.name).to(eq("A Love Supreme"))
+    end
+  end
+
+  describe('#delete') do
+    it("deletes an word by id") do
+      word = Word.new({:name => "A Love Supreme", :id => nil})
+      word.save()
+      word2 = Word.new({:name => "Blue", :id => nil})
+      word2.save()
+      word.delete()
+      expect(Word.all).to(eq([word2]))
+    end
+  end
+
+  describe('#definitions') do
+    it("returns an word's definitions") do
+      word = Word.new({:name => "A Love Supreme", :id => nil})
+      word.save()
+      definition = Definition.new({:name => "Naima", :word_id => word.id, :id => nil})
+      definition.save()
+      definition2 = Definition.new({:name => "Cousin Mary", :word_id => word.id, :id => nil})
+      definition2.save()
+      expect(word.definitions).to(eq([definition, definition2]))
+    end
+  end
 end

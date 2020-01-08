@@ -1,44 +1,47 @@
-require('pry')
+
 class Word
-  attr_accessor :new_word, :id
-  @@study_terms = {}
+  attr_accessor :name
+  attr_reader :id
+
+  @@words = {}
+  @@total_rows = 0
 
   def initialize(attributes)
-    @new_word = attributes.fetch(:new_word)
-    @id = attributes.fetch(:id)
-
-  end
-
-  def save
-    @@study_terms[self.id] = Word.new({ :new_word => self.new_word, :id => self.id })
+    @name = attributes.fetch(:name)
+    @id = attributes.fetch(:id) || @@total_rows += 1
   end
 
   def self.all
-    @@study_terms.values()
+    @@words.values()
+  end
+
+  def save
+    @@words[self.id] = Word.new({ :name => self.name, :id => self.id })
   end
 
   def ==(word_to_compare)
-    self.new_word == word_to_compare.new_word()
-  end
-
-  def add_definition
-    Definition.find_by_word_id(self.id)
-  end
-
-  def edit(new_word)
-  self.new_word = new_word
-  @@study_terms[self.id] = Word.new({ :new_word => self.new_word, :id => self.id })
+    self.name() == word_to_compare.name()
   end
 
   def self.clear
-    @@study_terms = {}
+    @@words = {}
+    @@total_rows = 0
   end
 
-  def self.find(new_word)
-     @@study_terms[new_word]
+  def self.find(id)
+    @@words[id]
+  end
+
+  def update(name)
+
+    self.name = name
+    @@words[self.id] = Word.new({ :name => self.name, :id => self.id })
   end
 
   def delete
-    @@study_terms.delete(self.new_word)
+    @@words.delete(self.id)
   end
+  def definitions
+  Definition.find_by_word(self.id)
+end
 end

@@ -1,50 +1,101 @@
 require 'rspec'
-require 'word'
 require 'definition'
+require 'word'
+require 'pry'
 
-describe('#Definition') do
-  before(:each)do
-  Definition.clear()
+describe '#Definition' do
+
+  before(:each) do
+    Word.clear
+    Definition.clear
+    @word = Word.new({:name => "Giant Steps", :id => nil})
+    @word.save()
   end
-  it ('saves a word and definiton') do
-    test = Definition.new("Compliment", "a polite expression of praise or admiration", nil)
-    expect(test.save()).to(eq(test))
+
+  describe('#==') do
+    it("is the same definition if it has the same attributes as another definition") do
+      definition = Definition.new({:name => "Naima", :word_id => @word.id, :id => nil})
+      definition2 = Definition.new({:name => "Naima", :word_id => @word.id, :id => nil})
+      expect(definition).to(eq(definition2))
+    end
   end
-  # it("deletes a definition") do
-  #   defined = Definition.new("Giant Steps", "Big leap", nil)
-  #   defined.save()
-  #   defined2 = Definition.new("Blue", "a wonderful color", nil)
-  #   defined2.save()
-  #   defined.delete()
-  #   expect(Definition.all).to(eq([defined2]))
-  # end
-  it ('saves all words and definitons') do
-    test = Definition.new("Compliment", "a polite expression of praise or admiration", nil)
-    test.save()
-    test2 = Definition.new("Smores", "graham cracker desert", nil)
-    test2.save()
-    test3 = Definition.new("Unicorn", "mythical creature", nil)
-    test3.save()
-    expect(Definition.all).to(eq([test, test2, test3]))
+
+  describe('.all') do
+    it("returns a list of all definitions") do
+      definition = Definition.new({:name => "Giant Steps", :word_id => @word.id, :id => nil})
+      definition.save()
+      definition2 = Definition.new({:name => "Naima", :word_id => @word.id, :id => nil})
+      definition2.save()
+      expect(Definition.all).to(eq([definition, definition2]))
+    end
   end
-  it('adds more than one definition') do
-    test = Definition.new("Compliment", "a polite expression of praise or admiration", nil)
-    test.save()
-    test2 = Definition.new("Smores", "graham cracker desert", nil)
-    test2.save()
-    test3 = Definition.new("Unicorn", "mythical creature", nil)
-    test3.save()
-    test.add_definition("an exchange of words")
-    test.save()
-    expect(test.alternate_definition).to(eq("an exchange of words" ))
+
+  describe('.clear') do
+    it("clears all definitions") do
+      definition = Definition.new({:name => "Giant Steps", :word_id => @word.id, :id => nil})
+      definition.save()
+      definition2 = Definition.new({:name => "Naima", :word_id => @word.id, :id => nil})
+      definition2.save()
+      Definition.clear()
+      expect(Definition.all).to(eq([]))
+    end
   end
-  it ('deletes a definition') do
-    test = Definition.new("Rope", "tightly spiraled twine", "another word for convince")
-    test.save()
-    test2 = Definition.new("Ring", "jewlery worn on the finger", "to call someone")
-    test2.save()
-    test2.delete_one("jewlery worn on the finger")
-    test2.save()
-      expect(test2.new_definition).to(eq(nil))
-end
+
+  describe('#save') do
+    it("saves a definition") do
+      definition = Definition.new({:name => "Naima", :word_id => @word.id, :id => nil})
+      definition.save()
+      expect(Definition.all).to(eq([definition]))
+    end
+  end
+
+  describe('.find') do
+    it("finds a definition by id") do
+      definition = Definition.new({:name => "Giant Steps", :word_id => @word.id, :id => nil})
+      definition.save()
+      definition2 = Definition.new({:name => "Naima", :word_id => @word.id, :id => nil})
+      definition2.save()
+      expect(Definition.find(definition.id)).to(eq(definition))
+    end
+  end
+
+  describe('#update') do
+    it("updates an definition by id") do
+      definition = Definition.new({:name => "Naima", :word_id => @word.id, :id => nil})
+      definition.save()
+      definition.update("Mr. P.C.", @word.id)
+      expect(definition.name).to(eq("Mr. P.C."))
+    end
+  end
+
+  describe('#delete') do
+    it("deletes an definition by id") do
+      definition = Definition.new({:name => "Giant Steps", :word_id => @word.id, :id => nil})
+      definition.save()
+      definition2 = Definition.new({:name => "Naima", :word_id => @word.id, :id => nil})
+      definition2.save()
+      definition.delete()
+      expect(Definition.all).to(eq([definition2]))
+    end
+  end
+
+  describe('.find_by_word') do
+    it("finds definitions for an word") do
+      word2 = Word.new({:name => "Blue", :id => nil})
+      word2.save
+      definition = Definition.new({:name => "Naima", :word_id => @word.id, :id => nil})
+      definition.save()
+      definition2 = Definition.new({:name => "California", :word_id => word2.id , :id => nil})
+      definition2.save()
+      expect(Definition.find_by_word(word2.id)).to(eq([definition2]))
+    end
+  end
+
+  describe('#word') do
+    it("finds the word a definition belongs to") do
+      definition = Definition.new({:name => "Naima", :word_id => @word.id, :id => nil})
+      definition.save()
+      expect(definition.word()).to(eq(@word))
+    end
+  end
 end

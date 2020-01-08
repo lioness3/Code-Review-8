@@ -1,39 +1,58 @@
-require('pry')
+
 class Definition
-  attr_accessor :id, :word_id, :user_definitions
+  attr_reader :id
+  attr_accessor :name, :word_id
 
   @@definitions = {}
+  @@total_rows = 0
 
   def initialize(attributes)
-    @id = rand(5)
-    @user_definitions = attributes.fetch("user_definitions")
-    @word_id = attributes.fetch("word_id")
+    @name = attributes.fetch(:name)
+    @word_id = attributes.fetch(:word_id)
+    @id = attributes.fetch(:id) || @@total_rows += 1
+  end
+
+  def ==(definition_to_compare)
+    (self.name() == definition_to_compare.name()) && (self.word_id() == definition_to_compare.word_id())
+  end
 
   def self.all
     @@definitions.values
   end
 
-  # def ==(word_to_compare)
-  #   self.new_word == word_to_compare.new_word()
-  # end
-
   def save
-    @@definitions[self.new_word] = Definition.new(self.word_id, self.user_definitions)
+    @@definitions[self.id] = Definition.new({:name => self.name, :word_id => self.word_id, :id => self.id})
   end
 
   def self.find(id)
     @@definitions[id]
   end
 
-  def self.find_by_word_id(word_id)
-    @@definitions.select { |definition| definition.word_id == word_id }
+  def update(name, word_id)
+    self.name = name
+    self.word_id = word_id
+    @@definitions[self.id] = Definition.new({:name => self.name, :word_id => self.word_id, :id => self.id})
+  end
+
+  def delete
+    @@definitions.delete(self.id)
   end
 
   def self.clear
     @@definitions = {}
   end
 
-  def delete
-  @@definitions.delete(self.word_id)
-end
+  def self.find_by_word(alb_id)
+    definitions = []
+    @@definitions.values.each do |definition|
+      if definition.word_id == alb_id
+        definitions.push(definition)
+      end
+    end
+    definitions
+  end
+
+  def word
+    Word.find(self.word_id)
+  end
 end
