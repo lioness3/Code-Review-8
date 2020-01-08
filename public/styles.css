@@ -1,0 +1,17 @@
+h1{
+  font-weight: bold;
+}
+ul{
+  list-style-type: none;
+}
+li{
+  font-size: 25pt;
+}
+.links{
+  font-size: 15pt; color: white; text-decoration: underline;
+}
+.home_input{
+  background-color: #19206B;
+  color: #8BD1F7;
+  border:solid white;
+}
