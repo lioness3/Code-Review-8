@@ -40,7 +40,7 @@ patch('/home/edit') do
   @word = Word.find(params[:id].to_i())
   define = Definition.find(params[:word_id].to_i())
   define.update(params[:name], @word_id)
-  
+
   @word.update(params[:name])
   @study_terms = Word.all()
   @definitions = Definition.all()
@@ -48,7 +48,6 @@ patch('/home/edit') do
 end
 get ('/home/delete') do
   @word = Word.find(params[:id].to_i())
-  @word.delete()
   @study_terms = Word.all()
   @definitions = Definition.all()
   erb(:home)
@@ -66,10 +65,8 @@ post('/home/edit') do
   new_word = params[:new_word]
   new_definition = params[:new_definition]
   alternate_definition = params[:alternate_definition]
-  word = Word.new(new_word, new_definition)
-  word.add_definition(params[:alternate_definition])
-  define = Definition.new(new_word, new_definition, alternate_definition)
-  @chosen_word = word.new_word
+  word = Word.new()
+  define = Definition.new()
   word.save()
   define.save()
   @definitions = Definition.all()

@@ -4,7 +4,7 @@
 
   <ul>
     <% @study_terms.each do |word| %>
-      <li><a href="/home/delete" class = "links"> ❌</a> <span style = "color:#68D172"> <%= word.name %> </span>
+      <li><a href="/home/delete" class = "links"> ❌</a> <span style = "color:#68D172"> <%= word.name %> </span>:
         <% end %>
     <% if @definitions.any? %>
         <% @definitions.each do |define| %><span class= "green"> <%= define.name %> </span>
