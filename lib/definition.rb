@@ -1,6 +1,5 @@
 
 class Definition
-  attr_reader
   attr_accessor :name, :word_id, :id
 
   @@definitions = {}

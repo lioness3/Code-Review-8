@@ -19,33 +19,35 @@ get('/home') do
 end
 post('/home') do
   name = params[:name]
-  word = Word.new({:name => name, :id => nil})
-  word.save()
+  @word = Word.new({:name => name, :id => nil})
+  @word.save()
   defined = params[:new_definition]
-  define = Definition.new(({:name => defined, :word_id => @word_id, :id => nil}))
-  define.save()
+  @define = Definition.new(({:name => defined, :word_id => @word_id, :id => nil}))
+  @define.save()
+
   @study_terms = Word.all()
   @definitions = Definition.all()
   erb(:home)
 end
 
-get('/home/edit') do
+get('/home/:id') do
   @word = Word.find(params[:id].to_i())
+  @define = Definition.find(params[:id].to_i())
   @study_terms = Word.all()
   @definitions = Definition.all()
 erb(:edit)
 end
 
-patch('/home/edit') do
+patch('/home/:id') do
+  name = params[:name]
   @word = Word.find(params[:id].to_i())
-  define = Definition.find(params[:word_id].to_i())
-  define.update(params[:name], @word_id)
-
-  @word.update(params[:name])
+@define = Definition.find_by_word(@self.word_id)
+  @define.update(params[:name], @word_id)
   @study_terms = Word.all()
   @definitions = Definition.all()
-  erb(:edit)
+  redirect to '/home'
 end
+
 get ('/home/delete') do
   @word = Word.find(params[:id].to_i())
   @study_terms = Word.all()
@@ -58,18 +60,5 @@ delete('/home/delete') do
   word.save
   @study_terms = Word.all()
   @definitions = Definition.all()
-  erb(:home)
-end
-
-post('/home/edit') do
-  new_word = params[:new_word]
-  new_definition = params[:new_definition]
-  alternate_definition = params[:alternate_definition]
-  word = Word.new()
-  define = Definition.new()
-  word.save()
-  define.save()
-  @definitions = Definition.all()
-  @study_terms = Word.all()
   erb(:home)
 end
