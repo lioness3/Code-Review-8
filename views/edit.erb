@@ -1,13 +1,10 @@
 <h1>Redefine: <%= @word.name %></h1>
-<form action="/home/<%= @word.id %>" value="post">
+<form action="/home/edit/<%= @define.id %>" value="post">
 <input name="_method" type="hidden" value="patch">
 <h3>
-  <!-- <label for="new_definition">Edit  Definition: "<%=  @define.name %> " Here:</label> -->
-  <input placeholder = "Edit: <%= @define.name %>" name="name" type="text">
+<label for="edited_definition"></label>
+  <input id = "edit_definition" placeholder = "Edit: <%= @define.name %>" name="edited_definition" type="text">
 </h3>
-  <label for="alternate_definition" >Edit   Definition Here:</label>
-  <input  name="alternate_definition"  placeholder = "<%= @alternate_definition %>" type="text">
-
 
   <button type="submit" style = "color: red">Save Changes</button>
 </form>

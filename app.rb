@@ -30,19 +30,20 @@ post('/home') do
   erb(:home)
 end
 
-get('/home/:id') do
+get('/home/edit/:id') do
+  edited_definition = params[:edited_definition]
   @word = Word.find(params[:id].to_i())
-  @define = Definition.find(params[:id].to_i())
+  @define = Definition.find(@word.id)
   @study_terms = Word.all()
   @definitions = Definition.all()
 erb(:edit)
 end
 
-patch('/home/:id') do
-  name = params[:name]
+patch('/home/edit/:id') do
+  edited_definition = params[:edited_definition]
   @word = Word.find(params[:id].to_i())
-@define = Definition.find_by_word(@self.word_id)
-  @define.update(params[:name], @word_id)
+ @define =  Definition.find(@word.id)
+  @define.update(edited_definition, @word.id)
   @study_terms = Word.all()
   @definitions = Definition.all()
   redirect to '/home'
