@@ -5,16 +5,18 @@
   <ul>
     <% @study_terms.each do |word| %>
       <li><a href="/home/delete" class = "links"> ❌</a> <span style = "color:#68D172"> <%= word.name %> </span>:
-        <% end %>
-    <% if @definitions.any? %>
-        <% @definitions.each do |define| %><span class= "green"> <%= define.name %> </span>
-        <% if define.name == define.name %>
-        <% break %>
-        <% end %>
-        <% end %>
+        <% break if word.name == word.name  %>
         <% end %>
 
-        <a href="/home/edit/<%= @define.id %>" class = "links"> ✏️ </a> </li>
+    <% if @definitions.any? %>
+        <% @definitions.each do |define| %><span class= "green"> <%= define.name %> </span>
+
+
+
+        <a href="/home/edit/<%= define.id %>" class = "links"> ✏️ </a> </li>
+        <% break if define.name == define.name  %>
+        <% end %>
+        <% end %>
   </ul>
 <% else %>
   <p>There are currently no words to display.</p>

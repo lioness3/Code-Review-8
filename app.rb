@@ -10,43 +10,47 @@ get('/') do
   # Definition.clear
   @study_terms = Word.all
   @definitions = Definition.all
-  erb(:home)
+  redirect to '/home'
 end
 get('/home') do
+  Word.clear
+  Definition.clear
   @study_terms = Word.all
   @definitions = Definition.all
   erb(:home)
 end
 post('/home') do
+    if !(params[:name] == "")
   name = params[:name]
-  @word = Word.new({:name => name, :id => nil})
+  @word = Word.new({:name => name, :id => @id})
   @word.save()
+end
+  if !(params[:new_definition] == "")
   defined = params[:new_definition]
-  @define = Definition.new(({:name => defined, :word_id => @word_id, :id => nil}))
+  @define = Definition.new(({:name => defined, :word_id => @word_id, :id => @id}))
   @define.save()
-
+end
   @study_terms = Word.all()
   @definitions = Definition.all()
   erb(:home)
 end
 
 get('/home/edit/:id') do
-  edited_definition = params[:edited_definition]
-  @word = Word.find(params[:id].to_i())
-  @define = Definition.find(@word.id)
+
+  @define = Definition.find(params[:id].to_i())
   @study_terms = Word.all()
   @definitions = Definition.all()
+
 erb(:edit)
 end
 
-patch('/home/edit/:id') do
-  edited_definition = params[:edited_definition]
+patch ('/home/edit/:id') do
   @word = Word.find(params[:id].to_i())
- @define =  Definition.find(@word.id)
-  @define.update(edited_definition, @word.id)
+ @define =  Definition.find(params[:id].to_i())
+  @define.update(params[:new_definition], @word.id)
   @study_terms = Word.all()
   @definitions = Definition.all()
-  redirect to '/home'
+  erb(:home)
 end
 
 get ('/home/delete') do
@@ -55,6 +59,7 @@ get ('/home/delete') do
   @definitions = Definition.all()
   erb(:home)
 end
+
 delete('/home/delete') do
   word = Word.find(params[:new_word])
   word.delete

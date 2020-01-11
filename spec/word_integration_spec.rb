@@ -11,5 +11,5 @@ describe('definition path ', {:type => :feature}) do
     click_on('Save Changes')
     expect(page).to have_content('SHMO')
   end
-end
+  end
 end
