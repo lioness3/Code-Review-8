@@ -9,8 +9,8 @@
 
   <button type="submit" style = "color: red;">Save Changes</button>
 </form>
-<form class="delete" action= "/home/ <%= @word.id %> /definitions/ <%= @definition.id %>" method="post">
+<form class="delete" action= "/words/<%= @word.id %>/definitions/<%= @definition.id %>" method="post">
   <input name="_method" type="hidden" value="delete">
-  <button type="submit" name="button">"DELETE DEFINITION</button>
+  <button type="submit" name="button">DELETE DEFINITION</button>
 </form>
 <a href="/words">return</a>

@@ -9,7 +9,7 @@
   <p> Please add your definitions below...</p>
 <% end %>
 
-<form class="" action="/words/<%= @word.id %> /definitions" method="post">
+<form class="" action="/words/<%= @word.id %>/definitions" method="post">
   <label for="new_definition">Add a Definition to <%= @word.name %> :</label>
   <input type="text" name="new_definition" value="">
   <button type="submit" name="button">ADD</button>
