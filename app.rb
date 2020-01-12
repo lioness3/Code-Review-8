@@ -65,11 +65,19 @@ get ('/words/delete') do
   @definitions = Definition.all()
   erb(:words)
 end
+patch('/words/:id/definitions/:definition_id') do
+  @word = Word.find(params[:id].to_i())
+  @defininition = Definition.find(params[:definition_id].to_i())
+  @definition.update(params[:new_definition], @word.id)
+  @words = Word.all()
+  @definitions = Definition.all()
+  erb(:words)
+end
 
-delete('/words/delete') do
-  word = Word.find(params[:new_word])
-  word.delete
-  word.save
+delete('/words/:id/definitions/:definition_id') do
+  @word = Word.find(params[:id])
+  @defininition = Definition.find(params[:definition_id].to_i())
+  @definition.delete
   @words = Word.all()
   @definitions = Definition.all()
   erb(:words)

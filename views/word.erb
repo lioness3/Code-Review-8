@@ -3,7 +3,7 @@
 
 <% if @definitions.any? %>
     <% @definitions.each do |definition| %>
-    <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>/delete" class = "links"> ❌</a><span class= "green"> <%= definition.name %> </span>  <a href="/words/<%= @word.id %>/definitions/<%= definition.id %>" class = "links"> ✏️ </a></li>
+    <li> <%= definition.name %> <a href="/words/<%= @word.id %>/definitions/<%= definition.id %>" class = "links"> ✏️ </a></li>
 <% end %>
 <% else %>
   <p> Please add your definitions below...</p>
