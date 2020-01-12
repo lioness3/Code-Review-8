@@ -1,9 +1,9 @@
 <h1>Learn your Vocabulary</h1>
 
-<% if @study_terms.any? %>
+<% if @words.any? %>
 
   <ul>
-    <% @study_terms.each do |word| %>
+    <% @words.each do |word| %>
       <li id='words'><a href = '/words/<%= word.id %>'> <%= word.name %></a></li>
      <% end %>
   </ul>
