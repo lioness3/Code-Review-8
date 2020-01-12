@@ -1,0 +1,16 @@
+
+<h1> <%= @definition.word.name %></h1>
+
+<% if @definitions.any? %>
+    <% @definitions.each do |definition| %>
+    <li><a href="/words/<%= @word.id %>/definitions/<%= definition.id %>/delete" class = "links"> ❌</a><span class= "green"> <%= definition.name %> </span>  <a href="/words/<%= @word.id %>/definitions/<%= definition.id %>" class = "links"> ✏️ </a></li>
+<% end %>
+<% else %>
+  <p> Please add your definitions below...</p>
+<% end %>
+
+<form class="" action="/words/<%= @word.id %> /definitions" method="post">
+  <label for="new_definition">Add a Definition <%= @word.name %> :</label>
+  <input type="text" name="new_definition" value="">
+  <button type="submit" name="button">ADD</button>
+</form>

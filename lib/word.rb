@@ -41,7 +41,8 @@ class Word
   def delete
     @@study_terms.delete(self.id)
   end
+
   def definitions
-  Definition.find_by_word(self.id)
+    Definition.find_by_word(self.id)
 end
 end
