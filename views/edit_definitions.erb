@@ -2,9 +2,9 @@
 <form action="/words/<%= @word.id %>/definitions/<%= @definition.id %>" value="post">
 <input name="_method" type="hidden" value="patch">
 <h3>
-<label for="new_definition">Edit: <%= @definition.name %></label>
+<label for="update_definition">Edit: <%= @definition.name %></label>
 <br>
-  <input id = "edit_definition"   name="new_definition" type="text">
+  <input id = "update_definition"   name="update_definition" type="text">
 </h3>
 
   <button type="submit" style = "color: red;">Save Changes</button>

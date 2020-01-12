@@ -3,7 +3,7 @@ class Word
   attr_accessor :name, :id
 
 
-  @@study_terms = {}
+  @@words = {}
   @@total_rows = 0
 
   def initialize(attributes)
@@ -12,11 +12,11 @@ class Word
   end
 
   def self.all
-    @@study_terms.values()
+    @@words.values()
   end
 
   def save
-    @@study_terms[self.id] = Word.new({ :name => self.name, :id => self.id })
+    @@words[self.id] = Word.new({ :name => self.name, :id => self.id })
   end
 
   def ==(word_to_compare)
@@ -24,22 +24,22 @@ class Word
   end
 
   def self.clear
-    @@study_terms = {}
+    @@words = {}
     @@total_rows = 0
   end
 
   def self.find(id)
-    @@study_terms[id]
+    @@words[id]
   end
 
   def update(name)
 
     self.name = name
-    @@study_terms[self.id] = Word.new({ :name => self.name, :id => self.id })
+    @@words[self.id] = Word.new({ :name => self.name, :id => self.id })
   end
 
   def delete
-    @@study_terms.delete(self.id)
+    @@words.delete(self.id)
   end
 
   def definitions
