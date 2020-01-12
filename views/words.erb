@@ -1,0 +1,20 @@
+<h1>Learn your Vocabulary</h1>
+
+<% if @study_terms.any? %>
+
+  <ul>
+    <% @study_terms.each do |word| %>
+      <li id='words'><a href = '/words/<%= word.id %>'> <%= word.name %></a></li>
+     <% end %>
+  </ul>
+<% else %>
+  <p> Please add your study words below...</p>
+<% end %>
+
+<form action="/words" method="post" style = "font-size: 13pt">
+
+  <label >Fill in the blank with a word you want to learn: </label>
+  <input name="name" class= "word_input" type="text"  >
+
+  <button type="submit" class= "btn-lg" name="button">ADD</button>
+</form>

@@ -8,63 +8,62 @@ also_reload('lib/**/*.rb')
 get('/') do
   # Word.clear
   # Definition.clear
-  @study_terms = Word.all
-  @definitions = Definition.all
-  redirect to '/home'
+  redirect to '/words'
 end
-get('/home') do
-  Word.clear
-  Definition.clear
+get('/words') do
   @study_terms = Word.all
-  @definitions = Definition.all
-  erb(:home)
+  erb(:words)
 end
-post('/home') do
-    if !(params[:name] == "")
+post('/words') do
   name = params[:name]
-  @word = Word.new({:name => name, :id => @id})
-  @word.save()
+  word = Word.new({:name => name, :id => nil})
+  word.save()
+  redirect to '/words'
 end
-  if !(params[:new_definition] == "")
-  defined = params[:new_definition]
-  @define = Definition.new(({:name => defined, :word_id => @word_id, :id => @id}))
-  @define.save()
+get('/words/:id') do
+
+  erb(:definition)
 end
-  @study_terms = Word.all()
-  @definitions = Definition.all()
-  erb(:home)
+get('/words/:id/definition') do
+  erb(:definition)
+end
+post('/words/:id/definition') do
+  name = params[:name]
+  definition = Definition.new({:name => name, :word_id => @word_id :id => nil})
+  definition.save()
+  erb(:definition)
 end
 
-get('/home/edit/:id') do
-
+get('/words/edit/:id') do
+  # @word = Word.find(params[:id].to_i())
   @define = Definition.find(params[:id].to_i())
   @study_terms = Word.all()
   @definitions = Definition.all()
-
 erb(:edit)
 end
 
-patch ('/home/edit/:id') do
-  @word = Word.find(params[:id].to_i())
+patch ('/words/edit/:id') do
+  # binding.pry
+  # @word = Word.find(params[:id].to_i())
  @define =  Definition.find(params[:id].to_i())
   @define.update(params[:new_definition], @word.id)
   @study_terms = Word.all()
   @definitions = Definition.all()
-  erb(:home)
+erb(:words)
 end
 
-get ('/home/delete') do
+get ('/words/delete') do
   @word = Word.find(params[:id].to_i())
   @study_terms = Word.all()
   @definitions = Definition.all()
-  erb(:home)
+  erb(:words)
 end
 
-delete('/home/delete') do
+delete('/words/delete') do
   word = Word.find(params[:new_word])
   word.delete
   word.save
   @study_terms = Word.all()
   @definitions = Definition.all()
-  erb(:home)
+  erb(:words)
 end

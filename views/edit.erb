@@ -1,4 +1,4 @@
-<h1>Redefine: <%= @define.word.name %></h1>
+<h1>Redefine: <%= @define.name %></h1>
 <form action="/home/edit/<%= @define.id %>" value="post">
 <input name="_method" type="hidden" value="patch">
 <h3>
@@ -9,3 +9,4 @@
 
   <button type="submit" style = "color: red;">Save Changes</button>
 </form>
+<a href="/home">return</a>
