@@ -2,7 +2,7 @@
 
 <% if @word.definitions %>
     <% @word.definitions.each do |definition| %>
-    <li> <%= definition.name %> <a href="/words/<%= @word.id %>/definitions/<%= definition.id %>" class = "links"> ✏️ </a></li>
+    <li> <%= definition.name %> <a href="/words/<%= @word.id %>/edit/<%= definition.id %>"> ✏️ </a></li>
 <% end %>
 <% else %>
   <p> Please add your definitions below...</p>
