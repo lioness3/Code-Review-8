@@ -25,6 +25,9 @@ This is an application that will demonstrate routing with ruby. This app is desi
 * run 'ruby app.rb' in terminal
 * open 'localhost:4567' in your browser
 * Verify all necessary steps by cloning your application from Github and then documenting your application's setup instructions yourself.
+
+######_OR_
+* visit https://git.heroku.com/hidden-waters-84291.git
 ***************
 #### _Known Bugs_
 * app will not delete definitions properly
