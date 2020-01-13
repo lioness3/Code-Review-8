@@ -1,15 +1,15 @@
-<h1>Redefine: <%= @word.name %></h1>
-<form action="/words/<%= @word.id %>/definitions/<%= @definition.id %>" value="post">
+<h1>Redefine: <%= @definition.word.name %></h1>
+<form action="/words/<%= @definition.word.id %>/definitions/<%= @definition.id %>" value="post">
 <input name="_method" type="hidden" value="patch">
 <h3>
 <label for="update_definition">Edit: <%= @definition.name %></label>
 <br>
-  <input id = "update_definition"   name="update_definition" type="text">
+  <input name="update_definition" type="text">
 </h3>
 
   <button type="submit" style = "color: red;">Save Changes</button>
 </form>
-<form class="delete" action= "/words/<%= @word.id %>/definitions/<%= @definition.id %>" method="post">
+<form class="delete" action= "/words/<%= @definition.word.id %>/definitions/<%= @definition.id %>" method="post">
   <input name="_method" type="hidden" value="delete">
   <button type="submit" name="button">DELETE DEFINITION</button>
 </form>
