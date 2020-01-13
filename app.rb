@@ -74,6 +74,7 @@ post('/words/:id/edit/:definition_id') do
   @words = Word.all
 erb(:edit_definitions)
 end
+
 get('/words/:id/definitions/:definition_id') do
   update = params[:update_definition]
   @word = Word.find(params[:id].to_i())
@@ -105,8 +106,9 @@ patch('/words/:id/definitions/:definition_id') do
 end
 
 delete('/words/:id/definitions/:definition_id') do
-  @word = Word.find(params[:id])
   @definition = Definition.find(params[:definition_id].to_i())
+  @definition.delete
+  @word = Word.find(params[:id])
   @definitions = Definition.all()
   @words = Word.all
   erb(:word)

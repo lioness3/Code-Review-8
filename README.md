@@ -27,8 +27,7 @@ This is an application that will demonstrate routing with ruby. This app is desi
 * Verify all necessary steps by cloning your application from Github and then documenting your application's setup instructions yourself.
 ***************
 #### _Known Bugs_
-* app will not show user input on edit page
-* app will not edit definition on localhost
+* app will not delete definitions properly
 ***************
 # _Technology Used_
 * Ruby
